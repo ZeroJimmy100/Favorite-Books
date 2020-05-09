@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <a href="/logoutUser">Log Out</a>
+    <h1>Success! Welcome, {{ create_user.first_name }}!</h1>
+    <p>Successfully registered (or logged in)!</p>
+    <br>
+    <h2>Add a Favorvite Book</h2>
+    <h4>title </h4>
+    <h4>Description</h4>
+    <form action ='' method='post'>
+        {% csrf_token %}
+        <input type="submit" value="Add">
+    </form>
+    <h3>All Books</h3>
+    {% for theseBooks in books %}
+       <a href="">{books.title}</a>
+       <p>(added by {{ books.uploaded_by.first_name }} {{ books.uploaded_by.last_name }})</p>
+    {% endfor %}
+
+</body>
+
+</html>
